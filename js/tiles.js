@@ -1,29 +1,59 @@
 //Tile generator JS
-
 let tileData = { };
-let numColumns = 8;
 
-function generateTileContent(cols) {
+function generateTileContent(colCount, tileCount) {
+    let numCols = 4;
+    let numTiles = 10;
+
+    if (colCount) {
+        numCols = colCount;
+    }
+
+    if (tileCount) {
+        numTiles = tileCount;
+    }
+
+
     //wipe the column container
     wipeColumnContainer();
 
-    //generate the tiles!
-    for (let i = 0; i < cols; i++) {
-        const columnContainer = document.getElementById("column-container");
+    //create parent tile
+    let column = document.createElement('div');
+    column.classList.add('tile');
+    column.classList.add('is-ancestor');
+    column.id = `tiles-container`;
 
-        //generate columns
-        let column = document.createElement('div');
-        column.classList.add('column');
-        column.id = `column-${i}`;
+    //generate the tile columns
+    for (let i = 0; i < numCols; i++) {
+        const columnContainer = document.getElementById("column-container");
         
-        //generate boxes
-        let box = document.createElement('div');
-        box.classList.add('box');
-        box.id = `box-${i}`;
+        //generate tile columns
+        let tile = document.createElement('div');
+        tile.classList.add('tile');
+        tile.classList.add('is-parent');
+        tile.classList.add('is-vertical');
+        tile.id = `tile-column-${i}`;
 
         //build tree
-        column.appendChild(box);
+        column.appendChild(tile);
         columnContainer.appendChild(column);
+    }
+
+    for (let i = 0; i < numTiles; i++) {
+        //generate tile
+        let tile = document.createElement('article');
+        tile.classList.add('tile');
+        tile.classList.add('is-child');
+        tile.id = `tile-${i}`;
+
+        //generate tile content
+        let tileTitle = document.createElement('div');
+        tileTitle.classList.add("title");
+        tileTitle.innerHTML = "Title";
+
+        //build tree
+        tile.appendChild(tileTitle);
+        document.getElementById(`tile-column-${i % numCols}`).appendChild(tile);
     }
 }
 
@@ -37,5 +67,5 @@ function wipeColumnContainer() {
 
 //add a page load event listener that calls the generateTileContent function
 document.addEventListener('onload', function() {
-    generateTileContent(8);
+    generateTileContent();
 });
