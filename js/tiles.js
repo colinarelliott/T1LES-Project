@@ -43,15 +43,6 @@ function generateTileContent(colCount, tileCount) {
         tile.id = `tile-${i}`;
 
         //generate tile content 
-
-        /*
-        <span class="icon-text">
-  <span class="icon">
-    <i class="fas fa-home"></i>
-  </span>
-  <span>Home</span>
-</span>*/
-
         let iconText = document.createElement('span');
         iconText.classList.add("icon-text");
 
@@ -80,6 +71,29 @@ function generateTileContent(colCount, tileCount) {
     }
 }
 
+//loads the tiles.json file data using readTextFile() and returns it
+function loadTileData(){
+    readTextFile("data/tiles.json", function(text){
+        let tileData = JSON.parse(text);
+        console.log(tileData);
+        //load into global variables window.tileData
+        window.tileData = tileData;
+    });
+}
+
+//reads .JSON files out to a string
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
 //get rid of all elements in the column-container
 function wipeColumnContainer() {
     const columnContainer = document.getElementById("column-container");
@@ -88,7 +102,10 @@ function wipeColumnContainer() {
     }
 }
 
-//add a page load event listener that calls the generateTileContent function
-document.addEventListener('onload', function() {
+//add a page load event listener that calls the functions
+this.addEventListener('load', function() {
+    //load tile data from tiles.json into window variable
+    loadTileData();
+    //generate the tiles on screen
     generateTileContent();
 });

@@ -20,5 +20,7 @@
         "title": "Hello World!",
         "subtitle": "This is a subtitle - located on the fourth tile."
         }
-    ]
+    ],
+    
+    "columns": 4
 }
