@@ -7883,26 +7883,29 @@ $grey-light: $beige-light;
 $primary: $purple;
 $link: $pink;
 */
-.columns {
+.columns, #column-container {
   padding: 1.0rem;
   margin-right: 2.0rem;
   margin-left: 2.0rem; }
-
-@keyframes TILESELECT {
-  0% {
-    filter: drop-shadow(5px 5px 5px #e5e5e5);
-    background-color: #f5f5f5; }
-  100% {
-    filter: drop-shadow(5px 5px 7px #e5e5e5);
-    background-color: #e5e5e5; } }
 
 .tile.is-child {
   background-color: #f5f5f5;
   padding: 0.5rem;
   border-radius: 5px;
   filter: drop-shadow(5px 5px 5px #e5e5e5);
-  animation-duration: 2s; }
+  transition-duration: 1s; }
 
 .tile:hover.is-child {
   background-color: #9999CC;
   filter: drop-shadow(7px 7px 5px #e5e5e5); }
+
+.title {
+  color: #333;
+  font-size: x-large; }
+
+.title:hover {
+  color: #222; }
+
+.subtitle {
+  color: #333;
+  font-size: medium; }

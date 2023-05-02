@@ -11,6 +11,7 @@
 $default-tile-color: #f5f5f5;
 $default-tile-color-hover: #e5e5e5;
 $dark-tile-color: #333;
+$dark-tile-color-hover: #222;
 $tile-select-color: #9999CC;
 
 // Update Bulma's global variables
@@ -31,34 +32,41 @@ $fullhd-enabled: false;
 $control-border-width: 2px;
 $input-border-color: #444;
 
-//custom styles
+//BEGIN CUSTOM STYLES
 
-.columns {
+//CONTAINERS
+.columns, #column-container {
     padding: 1.0rem;
     margin-right: 2.0rem;
     margin-left: 2.0rem;
 }
 
-@keyframes TILESELECT {
-    0% {
-        filter: drop-shadow(5px 5px 5px $default-tile-color-hover);
-        background-color: $default-tile-color;
-    }
-    100% {
-        filter: drop-shadow(5px 5px 7px $default-tile-color-hover);
-        background-color: $default-tile-color-hover;
-    }
-}
-
+//TILES
 .tile.is-child {
     background-color: $default-tile-color;
     padding: 0.5rem;
     border-radius: 5px;
     filter: drop-shadow(5px 5px 5px $default-tile-color-hover);
-    animation-duration: 2s;
+    transition-duration: 1s;
 }
 
 .tile:hover.is-child {
     background-color: $tile-select-color;
     filter: drop-shadow(7px 7px 5px $default-tile-color-hover);
 }
+
+.title {
+    color: $dark-tile-color;
+    font-size: x-large;
+}
+
+.title:hover {
+    color: $dark-tile-color-hover;
+}
+
+.subtitle {
+    color: $dark-tile-color;
+    font-size: medium;
+}
+
+//END CUSTOM STYLES

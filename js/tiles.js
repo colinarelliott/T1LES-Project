@@ -1,27 +1,25 @@
+const { subscribe } = require("diagnostics_channel");
+
 //Tile generator JS
 let tileData = { };
 
 function generateTileContent(colCount, tileCount) {
+    //defaults
     let numCols = 4;
     let numTiles = 10;
 
-    if (colCount) {
-        numCols = colCount;
-    }
+    //overrides
+    if (colCount) { numCols = colCount; }
+    if (tileCount) { numTiles = tileCount; }
 
-    if (tileCount) {
-        numTiles = tileCount;
-    }
-
-
-    //wipe the column container
+    //wipe the column container (clear all content)
     wipeColumnContainer();
 
     //create parent tile
-    let column = document.createElement('div');
-    column.classList.add('tile');
-    column.classList.add('is-ancestor');
-    column.id = `tiles-container`;
+    let container = document.createElement('div');
+    container.classList.add('tile');
+    container.classList.add('is-ancestor');
+    container.id = `tiles-container`;
 
     //generate the tile columns
     for (let i = 0; i < numCols; i++) {
@@ -35,8 +33,8 @@ function generateTileContent(colCount, tileCount) {
         tile.id = `tile-column-${i}`;
 
         //build tree
-        column.appendChild(tile);
-        columnContainer.appendChild(column);
+        container.appendChild(tile);
+        columnContainer.appendChild(container);
     }
 
     for (let i = 0; i < numTiles; i++) {
@@ -51,8 +49,13 @@ function generateTileContent(colCount, tileCount) {
         tileTitle.classList.add("title");
         tileTitle.innerHTML = "Title";
 
+        let tileSubtitle = document.createElement('div');
+        tileSubtitle.classList.add("subtitle");
+        tileSubtitle.innerHTML = "subtitle text";
+
         //build tree
         tile.appendChild(tileTitle);
+        tile.appendChild(tileSubtitle);
         document.getElementById(`tile-column-${i % numCols}`).appendChild(tile);
     }
 }
