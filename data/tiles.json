@@ -1,0 +1,24 @@
+
+{ "tiles": [
+        {
+        "type": "text",
+        "title": "Hello World!",
+        "subtitle": "This is a subtitle - located on the first tile."
+        },
+        {
+        "type": "text",
+        "title": "Hello World!",
+        "subtitle": "This is a subtitle - located on the second tile."
+        },
+        {
+        "type": "text",
+        "title": "Hello World!",
+        "subtitle": "This is a subtitle - located on the third tile."
+        },
+        {
+        "type": "text",
+        "title": "Hello World!",
+        "subtitle": "This is a subtitle - located on the fourth tile."
+        }
+    ]
+}
