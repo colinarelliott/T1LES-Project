@@ -3,24 +3,28 @@
         {
         "type": "text",
         "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the first tile."
+        "subtitle": "This is a subtitle - located on the first tile.",
+        "faicon": "fa-rocket"
         },
         {
         "type": "text",
         "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the second tile."
+        "subtitle": "This is a subtitle - located on the second tile.",
+        "faicon": "fa-rocket"
         },
         {
         "type": "text",
         "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the third tile."
+        "subtitle": "This is a subtitle - located on the third tile.",
+        "faicon": "fa-rocket"
         },
         {
         "type": "text",
         "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the fourth tile."
+        "subtitle": "This is a subtitle - located on the fourth tile.",
+        "faicon": "fa-rocket"
         }
     ],
-    
-    "columns": 4
+
+    "columns": 3
 }

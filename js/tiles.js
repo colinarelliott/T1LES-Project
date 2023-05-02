@@ -1,14 +1,8 @@
 //Tile generator JS
-let tileData = { };
-
-function generateTileContent(colCount, tileCount) {
+function generateTileContent() {
     //defaults
-    let numCols = 4;
-    let numTiles = 10;
-
-    //overrides
-    if (colCount) { numCols = colCount; }
-    if (tileCount) { numTiles = tileCount; }
+    let numCols = window.tileData.columns;
+    let numTiles = window.tileData.tiles.length;
 
     //wipe the column container (clear all content)
     wipeColumnContainer();
@@ -51,15 +45,15 @@ function generateTileContent(colCount, tileCount) {
 
         let iconData = document.createElement("i");
         iconData.classList.add("fas");
-        iconData.classList.add("fa-home"); //icon
+        iconData.classList.add(window.tileData.tiles[i].faicon); //icon
 
         let tileTitle = document.createElement('span');
         tileTitle.classList.add("title");
-        tileTitle.innerHTML = "Title";
+        tileTitle.innerHTML = window.tileData.tiles[i].title;
 
         let tileSubtitle = document.createElement('div');
         tileSubtitle.classList.add("subtitle");
-        tileSubtitle.innerHTML = "subtitle text";
+        tileSubtitle.innerHTML = window.tileData.tiles[i].subtitle;
 
         //build tree
         icon.appendChild(iconData);
@@ -81,7 +75,7 @@ function loadTileData(){
     });
 }
 
-//reads .JSON files out to a string
+//reads .JSON files out to a string using XMLHttpRequest
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
     rawFile.overrideMimeType("application/json");
@@ -106,6 +100,8 @@ function wipeColumnContainer() {
 this.addEventListener('load', function() {
     //load tile data from tiles.json into window variable
     loadTileData();
-    //generate the tiles on screen
-    generateTileContent();
+    setTimeout(function() {
+        //generate the tiles on screen
+        generateTileContent();
+    }, 50);
 });
