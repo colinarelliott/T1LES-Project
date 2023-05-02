@@ -7909,3 +7909,7 @@ $link: $pink;
 .subtitle {
   color: #333;
   font-size: medium; }
+
+#brand-tab {
+  text-align: left;
+  padding-right: 2.0rem; }
