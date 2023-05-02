@@ -6,8 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>T1les Project</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/tiles.js"></script>
   </head>
-  <body>
-    
+  <body onload="generateTileContent(8)">
+    <!--MENU BAR-->
+    <div class="tabs is-right">
+        <ul>
+          <li class="is-active"><a>Tiles</a></li>
+          <li><a>Settings</a></li>
+        </ul>
+    </div>
+    <!--END MENU BAR-->
+
+    <!--HEADER-->
+    <div id="header" class="columns">
+        <div class="column is-full">
+            <div class="block">
+                <div class="title"><strong>t1les project</strong></div>
+                <div class="subtitle">a set of info in tiley styley</div>
+            </div>
+        </div>
+    </div>
+    <!--END HEADER-->
+
+    <!--TILES-->
+    <div id="column-container" class="columns">
+        <div class="column">
+            1
+            <div class="box"> CONTENT </div>
+        </div>
+        <div class="column">
+            2
+            <div class="box"> CONTENT </div>
+        </div>
+        <div class="column">
+            3 
+            <div class="box"> CONTENT </div>
+        </div>
+        <div class="column">
+            4
+            <div class="box"> CONTENT </div>
+        </div>
+        <div class="column">
+            5 
+            <div class="box"> CONTENT </div>
+        </div>
+        <div class="column">
+            6
+            <div class="box"> CONTENT </div>
+        </div>
+      </div>
+      <!--END TILES-->
   </body>
 </html>
