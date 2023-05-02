@@ -44,7 +44,7 @@ $input-border-color: #444;
 //TILES
 .tile.is-child {
     background-color: $default-tile-color;
-    padding: 0.5rem;
+    padding: 0.75rem;
     border-radius: 5px;
     filter: drop-shadow(5px 5px 5px $default-tile-color-hover);
     transition-duration: 1s;
@@ -58,15 +58,22 @@ $input-border-color: #444;
 .title {
     color: $dark-tile-color;
     font-size: x-large;
+    padding-bottom: 0.25rem;
+    padding-left: 0.25rem;
 }
 
 .title:hover {
     color: $dark-tile-color-hover;
 }
 
+.icon {
+    padding-left: 0.5rem;
+}
+
 .subtitle {
     color: $dark-tile-color;
     font-size: medium;
+    padding: 0.5rem;
 }
 
 #brand-tab {

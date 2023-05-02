@@ -7890,7 +7890,7 @@ $link: $pink;
 
 .tile.is-child {
   background-color: #f5f5f5;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 5px;
   filter: drop-shadow(5px 5px 5px #e5e5e5);
   transition-duration: 1s; }
@@ -7901,14 +7901,20 @@ $link: $pink;
 
 .title {
   color: #333;
-  font-size: x-large; }
+  font-size: x-large;
+  padding-bottom: 0.25rem;
+  padding-left: 0.25rem; }
 
 .title:hover {
   color: #222; }
 
+.icon {
+  padding-left: 0.5rem; }
+
 .subtitle {
   color: #333;
-  font-size: medium; }
+  font-size: medium;
+  padding: 0.5rem; }
 
 #brand-tab {
   text-align: left;
