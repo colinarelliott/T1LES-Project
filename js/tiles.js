@@ -1,5 +1,3 @@
-const { subscribe } = require("diagnostics_channel");
-
 //Tile generator JS
 let tileData = { };
 
@@ -44,8 +42,27 @@ function generateTileContent(colCount, tileCount) {
         tile.classList.add('is-child');
         tile.id = `tile-${i}`;
 
-        //generate tile content
-        let tileTitle = document.createElement('div');
+        //generate tile content 
+
+        /*
+        <span class="icon-text">
+  <span class="icon">
+    <i class="fas fa-home"></i>
+  </span>
+  <span>Home</span>
+</span>*/
+
+        let iconText = document.createElement('span');
+        iconText.classList.add("icon-text");
+
+        let icon = document.createElement('span')
+        icon.classList.add("icon");
+
+        let iconData = document.createElement("i");
+        iconData.classList.add("fas");
+        iconData.classList.add("fa-home"); //icon
+
+        let tileTitle = document.createElement('span');
         tileTitle.classList.add("title");
         tileTitle.innerHTML = "Title";
 
@@ -54,7 +71,10 @@ function generateTileContent(colCount, tileCount) {
         tileSubtitle.innerHTML = "subtitle text";
 
         //build tree
-        tile.appendChild(tileTitle);
+        icon.appendChild(iconData);
+        iconText.appendChild(icon);
+        iconText.appendChild(tileTitle);
+        tile.appendChild(iconText);
         tile.appendChild(tileSubtitle);
         document.getElementById(`tile-column-${i % numCols}`).appendChild(tile);
     }
