@@ -3,26 +3,22 @@
         {
         "type": "text",
         "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the first tile.",
+        "content": "Welcome to T1LES! This is a content area. You can put anything you want here. I am working on developing different types of tiles. This tile is the text type.",
         "faicon": "fa-rocket"
         },
         {
-        "type": "text",
-        "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the second tile.",
-        "faicon": "fa-rocket"
+        "type": "image",
+        "title": "Image Tile",
+        "content": "This is an image tile. You can put any image you want here by changing the image url in the json file.",
+        "faicon": "fa-image",
+        "image": "http://placehold.it/400x300"
         },
         {
-        "type": "text",
-        "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the third tile.",
-        "faicon": "fa-rocket"
-        },
-        {
-        "type": "text",
-        "title": "Hello World!",
-        "subtitle": "This is a subtitle - located on the fourth tile.",
-        "faicon": "fa-rocket"
+        "type": "image",
+        "title": "just the image",
+        "faicon": "fa-image",
+        "content": "",
+        "image": "http://placehold.it/400x300"
         }
     ],
 
