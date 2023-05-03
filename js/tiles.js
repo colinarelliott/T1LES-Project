@@ -179,32 +179,73 @@ function generateTileContent() {
         tile.classList.add('is-child');
         tile.id = `tile-${i}`;
 
-        //generate tile content 
-        let iconText = document.createElement('span');
-        iconText.classList.add("icon-text");
+        if (window.tileData.tiles[i].type == "text") {
 
-        let icon = document.createElement('span')
-        icon.classList.add("icon");
+            //generate tile content 
+            let iconText = document.createElement('span');
+            iconText.classList.add("icon-text");
 
-        let iconData = document.createElement("i");
-        iconData.classList.add("fas");
-        iconData.classList.add(window.tileData.tiles[i].faicon); //icon
+            let icon = document.createElement('span')
+            icon.classList.add("icon");
 
-        let tileTitle = document.createElement('span');
-        tileTitle.classList.add("title");
-        tileTitle.innerHTML = window.tileData.tiles[i].title;
+            let iconData = document.createElement("i");
+            iconData.classList.add("fas");
+            iconData.classList.add(window.tileData.tiles[i].faicon); //icon
 
-        let tileSubtitle = document.createElement('div');
-        tileSubtitle.classList.add("subtitle");
-        tileSubtitle.innerHTML = window.tileData.tiles[i].subtitle;
+            let tileTitle = document.createElement('span');
+            tileTitle.classList.add("title");
+            tileTitle.innerHTML = window.tileData.tiles[i].title;
 
-        //build tree
-        icon.appendChild(iconData);
-        iconText.appendChild(icon);
-        iconText.appendChild(tileTitle);
-        tile.appendChild(iconText);
-        tile.appendChild(tileSubtitle);
-        document.getElementById(`tile-column-${i % window.numCols}`).appendChild(tile);
+            let tileSubtitle = document.createElement('div');
+            tileSubtitle.classList.add("subtitle");
+            tileSubtitle.innerHTML = window.tileData.tiles[i].content;
+
+            //build tree
+            icon.appendChild(iconData);
+            iconText.appendChild(icon);
+            iconText.appendChild(tileTitle);
+            tile.appendChild(iconText);
+            tile.appendChild(tileSubtitle);
+            document.getElementById(`tile-column-${i % window.numCols}`).appendChild(tile);
+
+        } else if (window.tileData.tiles[i].type == "image") {
+            //generate tile content
+            //generate tile content 
+            let iconText = document.createElement('span');
+            iconText.classList.add("icon-text");
+
+            let icon = document.createElement('span')
+            icon.classList.add("icon");
+
+            let iconData = document.createElement("i");
+            iconData.classList.add("fas");
+            iconData.classList.add(window.tileData.tiles[i].faicon); //icon
+
+            let tileTitle = document.createElement('span');
+            tileTitle.classList.add("title");
+            tileTitle.innerHTML = window.tileData.tiles[i].title;
+
+            let tileSubtitle = document.createElement('p');
+            tileSubtitle.classList.add("subtitle");
+            tileSubtitle.innerHTML = window.tileData.tiles[i].content;
+
+            let tileImage = document.createElement('figure');
+            tileImage.classList.add("image");
+            tileImage.classList.add("is-4by3");
+
+            let tileImageContent = document.createElement('img');
+            tileImageContent.src = window.tileData.tiles[i].image;
+
+            //build tree
+            tileImage.appendChild(tileImageContent);
+            icon.appendChild(iconData);
+            iconText.appendChild(icon);
+            iconText.appendChild(tileTitle);
+            tile.appendChild(iconText);
+            tile.appendChild(tileSubtitle);
+            tile.appendChild(tileImage);
+            document.getElementById(`tile-column-${i % window.numCols}`).appendChild(tile);
+        }
     }
 }
 
