@@ -7888,6 +7888,17 @@ $link: $pink;
   margin-right: 1.0rem;
   margin-left: 1.0rem; }
 
+.box {
+  background-color: #f5f5f5;
+  padding: 0.75rem;
+  border-radius: 5px;
+  filter: drop-shadow(5px 5px 5px #e5e5e5);
+  transition-duration: 1s; }
+
+.box:hover {
+  background-color: #9999CC;
+  filter: drop-shadow(7px 7px 5px #e5e5e5); }
+
 .tile.is-child {
   background-color: #f5f5f5;
   padding: 0.75rem;
@@ -7919,3 +7930,33 @@ $link: $pink;
 #brand-tab {
   text-align: left;
   padding-right: 2.0rem; }
+
+.tabs li.is-active a {
+  border-bottom-color: #9999CC;
+  color: #231f48; }
+
+label input[type="radio"] {
+  display: none; }
+
+label input[type="radio"] ~ span {
+  position: relative;
+  display: inline-block;
+  padding: 3px 0 3px 25px; }
+
+label input[type="radio"] ~ span:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 18px;
+  height: 18px;
+  background: #9999CC;
+  margin-right: 5px;
+  border: 1px solid #231f48;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  transition: all 300ms ease-in-out; }
+
+label input[type="radio"]:checked ~ span:before {
+  border: 5px solid #231f48; }

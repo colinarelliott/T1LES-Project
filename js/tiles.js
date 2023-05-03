@@ -59,7 +59,6 @@ function settings() {
     let amountOfColumns = document.createElement('div');
     amountOfColumns.classList.add('box');
     amountOfColumns.classList.add('has-text-centered');
-    amountOfColumns.classList.add('has-background-primary');
     amountOfColumns.setAttribute('onclick', 'checkAmountOfColumns()');
     columnA.appendChild(amountOfColumns);
 
