@@ -1,3 +1,44 @@
+//Global variables
+window.tabName = "Tiles";
+
+//Tab switcher
+function switchTab(tabName) {
+    //set the tab name
+    window.tabName = tabName;
+}
+
+function tiles() {
+    //flip tab states in html
+    let settingsTab = document.getElementById("settings-tab");
+    let tilesTab = document.getElementById("tiles-tab");
+    settingsTab.classList.remove("is-active");
+    tilesTab.classList.add("is-active");
+    //switch tabName variable
+    switchTab("Tiles");
+    //wipe the column container (clear all content)
+    wipeColumnContainer();
+    
+    //load tile data from tiles.json into window variable
+    loadTileData();
+    setTimeout(function() {
+        //generate the tiles on screen
+        generateTileContent();
+    }, 50); //wait 50ms for the data to loadn then generate the tiles
+}
+
+function settings() {
+    //flip tab states in html
+    let settingsTab = document.getElementById("settings-tab");
+    let tilesTab = document.getElementById("tiles-tab");
+    settingsTab.classList.add("is-active");
+    tilesTab.classList.remove("is-active");
+    //switch tabName variable
+    switchTab("Settings");
+    //wipe the column container (clear all content)
+    wipeColumnContainer();
+    //add in settings content here
+}
+
 //Tile generator JS
 function generateTileContent() {
     //defaults
@@ -103,5 +144,5 @@ this.addEventListener('load', function() {
     setTimeout(function() {
         //generate the tiles on screen
         generateTileContent();
-    }, 50);
+    }, 50); //wait 50ms for the data to loadn then generate the tiles
 });
