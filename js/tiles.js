@@ -3,9 +3,13 @@ this.addEventListener('load', function() {
     //Global variables
     window.tabName = "Tiles";
     //load tile data from tiles.json into window variable
-    loadTileData();
+    //loadTileData();
+    //load data from mongodb into window variable
+    loadTileDataFromMongoDB();
+
     setTimeout(function() {
         //defaults loaded from tiles.json
+        console.log(window.tileData);
         window.numCols = window.tileData.columns;
         window.numTiles = window.tileData.tiles.length;
         //generate the tiles on screen
@@ -25,7 +29,11 @@ function tiles() {
     wipeColumnContainer();
     
     //load tile data from tiles.json into window variable
-    loadTileData();
+    //loadTileData();
+
+    //load data from mongodb into window variable
+    loadTileDataFromMongoDB();
+
     setTimeout(function() {
         //generate the tiles on screen
         generateTileContent();
@@ -144,4 +152,15 @@ function loadTileData(){
         //load into global variables window.tileData
         window.tileData = tileData;
     });
+}
+
+function loadTileDataFromMongoDB() {
+    //fetch data from localhost:8080/tiles
+    fetch('http://localhost:8080/tiles')
+    .then(response => response.json())
+    .then(data => {
+        //load into global variables window.tileData
+        window.tileData = data;
+    }
+    );
 }

@@ -1,13 +1,14 @@
 const express = require('express');
+const router = express.Router();
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const { MongoClient } = require("mongodb");
+const MongoClient = require('mongodb').MongoClient;
 
 // Replace the uri string with your connection string.
 const uri = "mongodb://127.0.0.1:27017/";
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function initDB() {
     //check to see if the 'tilesdev' database exists and if it doesn't, create it
@@ -19,28 +20,34 @@ async function initDB() {
         }
     }
     if (!databaseExists) {
-        //await client.db().admin().createDatabase("tilesdev");
+        //create the database and fill it with sample data if it doesn't exist
     } else {
         console.log("Database connected. [tilesdev]");
     }
 }
 initDB().catch(console.dir);
-/*getTiles();
 
-async function getTiles() {
-    try {
-        const database = client.db('tilesdev');
-        const tiles = database.collection('tiles');
-
-        // get all the tiles in the collection
-        const tileset = await tiles.find();
-
-        console.log(tileset);
-    } finally {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-    }
-}*/
+//custom routes for node requests
+router.post('/tiles', function (req, res) { 
+    const uri = 'mongodb://localhost:27017';
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  
+    const mongoTiles = async () => {
+      try {
+        await client.connect();
+        const db = client.db('tilesdev');
+        const collection = db.collection('tiles');
+        const tiles = await collection.find({}).toArray();
+        return tiles;
+        } finally {
+            client.close();
+            }
+        }
+    mongoTiles().then(tiles => { 
+        res.send(tiles);
+    });
+});
+//end custom routes
 
 const LISTEN_PORT = 8080;
 
