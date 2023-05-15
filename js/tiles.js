@@ -156,11 +156,18 @@ function loadTileData(){
 
 function loadTileDataFromMongoDB() {
     //fetch data from localhost:8080/tiles
-    fetch('http://localhost:8080/tiles')
-    .then(response => response.json())
-    .then(data => {
-        //load into global variables window.tileData
-        window.tileData = data;
-    }
+    fetch('http://localhost:8080/tiles',
+        {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            method: "GET"
+        })
+        .then(response => response.json())
+        .then(data => {
+            //load into global variables window.tileData
+            window.tileData = data;
+        }
     );
 }

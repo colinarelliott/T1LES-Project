@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
+const cors = require('cors');
 const app = express();
+app.use(cors());
 const http = require('http');
 const server = http.createServer(app);
 const MongoClient = require('mongodb').MongoClient;
@@ -28,7 +29,7 @@ async function initDB() {
 initDB().catch(console.dir);
 
 //custom routes for node requests
-router.post('/tiles', function (req, res) { 
+app.get('/tiles', function (req, res) { 
     const uri = 'mongodb://localhost:27017';
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   
@@ -37,23 +38,28 @@ router.post('/tiles', function (req, res) {
         await client.connect();
         const db = client.db('tilesdev');
         const collection = db.collection('tiles');
-        const tiles = await collection.find({}).toArray();
+        const tiles = await collection.find({});
         return tiles;
+        } catch (err) {
+            //console.log(err.stack);
         } finally {
             client.close();
             }
         }
     mongoTiles().then(tiles => { 
-        res.send(tiles);
+        res.json(tiles);
+        console.log(tiles);
     });
 });
-//end custom routes
-
-const LISTEN_PORT = 8080;
 
 app.get('/', function(req, res) {
     res.sendFile('index.html', {root:__dirname});
 });
+
+//end custom routes
+
+//start server
+const LISTEN_PORT = 8080;
 
 app.use(express.static(__dirname));
 server.listen(LISTEN_PORT);
